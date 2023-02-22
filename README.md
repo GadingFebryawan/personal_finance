@@ -3,8 +3,8 @@ web service about your balance,income and expense
 # How To Use
 1. Git Clone
 2. npm install
-3. npm install sequelize-cli (saya menggunakan sequelize untuk memudahkan pembuatan model dan migration serta query ke database)
-4. node server (host dan port saya setting localhost:3003)
+3. npm install sequelize-cli (I use sequelize because it makes easier for me to do something like create model,migration and query to database)
+4. node server (host and port is default setting to localhost:3003)
 # API
 1. User
     - getAllUser (method : get, url : "/user")
