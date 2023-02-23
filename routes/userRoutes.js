@@ -1,6 +1,6 @@
-const User = require("../models").User;
-const Income = require("../models").Income;
-const Expense = require("../models").Expense;
+const User = require("../models/db").User;
+const Income = require("../models/db").Income;
+const Expense = require("../models/db").Expense;
 
 module.exports = function (router) {
   router.get("/user", (req, res) => {
@@ -8,8 +8,8 @@ module.exports = function (router) {
       include: [Income, Expense]
     })
       .then(users => {
-        if(!users){
-          return res.status(422).json({ "message": "There is no User", "data" : {}});
+        if (users.length == 0) {
+          return res.json({ "message": "There is no User", "data": [] });
         }
         res.json({ "message": "Success Get All User", "data": users });
       })
@@ -19,11 +19,11 @@ module.exports = function (router) {
   router.get("/user/:id", (req, res) => {
     User.findAll({
       where: { id: req.params.id },
-      include: [Income,Expense]
+      include: [Income, Expense]
     })
       .then(user => {
-        if(!user[0]){
-          return res.status(422).json({ "message": `User Not Found, Id : ${req.params.id}`});
+        if (!user[0]) {
+          return res.status(422).json({ "message": `User Not Found, Id : ${req.params.id}` });
         }
         res.json({ "message": `Success Get Data User, Id : ${req.params.id}`, "data": user[0] });
       })
@@ -61,10 +61,10 @@ module.exports = function (router) {
       where: { id: req.params.id },
       include: [Income, Expense]
     }).then(data => {
-      if(!data){
-        return res.status(422).json({ "message": `User Not Found, Id : ${req.params.id}`});
+      if (!data) {
+        return res.status(422).json({ "message": `User Not Found, Id : ${req.params.id}` });
       }
-      res.json({ "message": `Success Delete User, Id : ${req.params.id}`});
+      res.json({ "message": `Success Delete User, Id : ${req.params.id}` });
     }).catch(err => res.json(err));
   });
 };

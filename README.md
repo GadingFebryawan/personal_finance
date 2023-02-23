@@ -16,8 +16,10 @@ web service about your balance,income and expense
 2. Income
     - getAllIncome (method : get, url : "/income")
     - storeIncome (method : post, url : "/income", body : {"user_id" : 99, "description" : "income in january 2023", "amount" : 2000000, "date" : "2023-01-25"})
+    - updateIncome (method : put, url : "/income/user/:id_user/id/:id", body : { "description" : "new Desc", "amount" : 000, "date" : "2023-01-25" })
     - deleteIncome (method : delete, url : "/income/user/:id_user/id/:id_income")
 3. Expense
     - getAllExpense (method : get, url : "/expense")
     - storeExpense (method : post, url : "/expense", body : {"user_id" : 99, "description" : "expense in january 2023", "amount" : 25000, "date" : "2023-01-28"})
+    - updateExpense (method : put, url : "/expense/user/:id_user/id/:id", body : { "description" : "new Desc", "amount" : 000, "date" : "2023-01-25" })
     - deleteExpense (method : delete, url : "/expense/user/:id_user/id/:id_expense")

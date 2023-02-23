@@ -10,5 +10,8 @@ app.use(bodyparser.json());
 require("./routes/userRoutes")(app);
 require("./routes/incomeRoutes")(app);
 require("./routes/expenseRoutes")(app);
+app.get('*', function (req, res) {
+    res.status(404).json({ 'message': "Url Not Found" });
+});
 
-app.listen(port,() => console.log(`Server started on ${port}`));
+app.listen(port, () => console.log(`Server started on ${port}`));
