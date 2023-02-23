@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Expense extends Model {
     static associate(models) {
-      Expense.belongsTo(models.User, { localKey: "user_id", foreignKey: "id" });
+      Expense.belongsTo(models.User, { localKey: "user_id", foreignKey: "id", onDelete: 'CASCADE' });
     }
   }
   Expense.init({

@@ -85,7 +85,7 @@ module.exports = function (router) {
     if (!expense) {
       return res.status(422).json({ "message": `Expense Not Found, User Id : ${req.params.user_id} ,Id : ${req.params.id}` });
     }
-    user.balance -= expense.amount;
+    user.balance += expense.amount;
     await user.save();
 
     //delete expense
